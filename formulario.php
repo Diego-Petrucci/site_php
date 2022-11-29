@@ -32,7 +32,7 @@
             top: 50%;
             left: 50%;
             transform:translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.6);
             padding: 15px;
             border-radius: 20px;
             width: 20%;
