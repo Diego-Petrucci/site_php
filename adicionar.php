@@ -1,17 +1,16 @@
 <?php
-
+    session_start();
     if(isset($_POST['submit'])){
         
         include_once('config.php');
 
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-        $sexo = $_POST['sexo'];
-        $data_nascimento = $_POST['data_nascimento'];
-        
-        $result = mysqli_query($conexao, "INSERT INTO usuarios (nome, email, senha, sexo, data_nascimento)
-        VALUES ('$nome', '$email', '$senha', '$sexo', '$data_nascimento')");
+        $musica = $_POST['musica'];
+        $artista = $_POST['artista'];
+        $id_user = $_SESSION['id_user']; 
+            
+
+       $result = mysqli_query($conexao, "INSERT INTO playlists (artista, musica, id_user)
+       VALUES ('$artista', '$musica', '$id_user')");
     }
 
 ?>
@@ -21,7 +20,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário</title>
+    <title>Adicionar músicas</title>
     <style>
         body{
             font-family: Arial, Helvetica, sans-serif;
@@ -114,41 +113,21 @@
     </style>
 </head>
 <body>
-    <a href="home.php">VOLTAR</a>
+    <a href="playlist.php">VOLTAR</a>
     <div class="box">
-        <form action="formulario.php" method="POST" enctype="multipart/form-data">
+        <form action="adicionar.php" method="POST" enctype="multipart/form-data">
             <fieldset>
-                <legend><b>Cadastro de usuarios</b></legend>
+                <legend><b>Adicione uma música</b></legend>
                 <br>
                 <div class="inputBox">
-                    <input type="text" name="nome" id="nome" class="inputUser" required>
-                    <label for="nome" class="labelInput">Nome Completo</label>
+                    <input type="text" name="musica" id="musica" class="inputUser" required>
+                    <label for="musica" class="labelInput">Nome da Música</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="email" id="email" class="inputUser" required>
-                    <label for="email" class="labelInput">Email</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="password" name="senha" id="senha" class="inputUser" required>
-                    <label for="senha" class="labelInput">senha</label>
-                </div>
-                <br>
-                <p>Sexo:</p>
-                <input type="radio" id="feminino" name="sexo" value="feminino" required>
-                <label for="feminino">Feminino</label>
-                <br>
-                <input type="radio" id="masculino" name="sexo" value="masculino" required>
-                <label for="masculino">Masculino</label>
-                <br>
-                <input type="radio" id="outro" name="sexo" value="outro" required>
-                <label for="outro">Outro</label>
-                <br><br><br>
-                    <label for="data_nascimento">Data de Nascimento:</label>
-                    <input type="date" name="data_nascimento" id="data_nascimento" required>
-                <br><br>
-                <input type="submit" name="submit" id="submit" value="Cadastrar">
+                    <input type="text" name="artista" id="artista" class="inputUser" required>
+                    <label for="artista" class="labelInput">Artista</label>
+                <input type="submit" name="submit" id="submit" value="Adicionar">
             </fieldset>
         </form>
     </div>

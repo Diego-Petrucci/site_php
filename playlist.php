@@ -16,6 +16,7 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="adicionar.php">ADICIONAR</a>
     <h1>PLAYLISTS
 </body>
 </html>

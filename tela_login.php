@@ -44,9 +44,23 @@
     .inputSubmit:hover{
         background-color: deepskyblue;
     }
+    a{
+            position: absolute;
+            text-decoration: none;
+            color: white;
+            border: 3px solid dodgerblue;  
+            border-radius: 15px;
+            padding: 20px;
+            background-color: dodgerblue;
+    }
+    a:hover{
+            background-color: red;
+            border: 3px solid red; 
+    }
     </style>
 </head>
 <body>
+    <a href="home.php">VOLTAR</a>
     <div class="tela_login">
             <h1>Login</h1>
             <br>
