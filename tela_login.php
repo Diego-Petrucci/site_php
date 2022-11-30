@@ -51,9 +51,9 @@
             <h1>Login</h1>
             <br>
         <form action="test_login.php" method="POST">
-            <input type="text" name="email" placeholder="Email">
+            <input type="text" name="email" placeholder="Email" required>
             <br><br>
-            <input type="password" name="senha" placeholder="Senha">
+            <input type="password" name="senha" placeholder="Senha" required>
             <br><br><br>
             <input class="inputSubmit" type="submit" name="submit" value="Entrar">
         </form>
