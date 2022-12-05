@@ -43,7 +43,7 @@
 </head>
 <body>
     <div class="erro_login">
-        <img src="triangulo.png" width='300px'>
+        <img src="images/triangulo.png" width='300px'>
         <br>
         <br>
         <br>

@@ -7,7 +7,6 @@
         $id_user = $_GET['id_user'];
         $sql = "SELECT * FROM usuarios WHERE email = '$email' and senha = '$senha'";
         $result = $conexao -> query($sql);
-        print_r($result);
 
         if(mysqli_num_rows($result) < 1){
             unset($_SESSION['email']);
@@ -19,6 +18,7 @@
 
             $_SESSION['email'] = $email;
             $_SESSION['senha'] = $senha;
+            $_SESSION['nome'] = $nome;
             $_SESSION['id_user'] = $dados_usuario['id_user'];
             header('Location: playlist.php');
         }

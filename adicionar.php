@@ -6,12 +6,15 @@
 
         $musica = $_POST['musica'];
         $artista = $_POST['artista'];
+        $link = $_POST['link'];
         $id_user = $_SESSION['id_user']; 
-            
-
-       $result = mysqli_query($conexao, "INSERT INTO playlists (artista, musica, id_user)
-       VALUES ('$artista', '$musica', '$id_user')");
+        
+        
+        $result = mysqli_query($conexao, "INSERT INTO playlists (artista, musica, link, id_user)
+        VALUES ('$artista', '$musica', '$link', '$id_user')");
+        header('Location: playlist.php');
     }
+    
 
 ?>
 <!DOCTYPE html>
@@ -22,7 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar músicas</title>
     <style>
-        body{
+         body{
             font-family: Arial, Helvetica, sans-serif;
             background-image: linear-gradient(135deg, #001247 0%, #00bfff 100%);
         }
@@ -74,16 +77,6 @@
             font-size: 12px;
             color: #00486f  ;
         }
-        #data_nascimento{
-            border: none;
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-top: 8px;
-            padding-bottom: 8px;
-            border-radius: 10px;
-            outline: none;
-            font-size: 15px;
-        }
         #submit{
             background-color:  #00486f ;
             border: none;
@@ -113,7 +106,9 @@
     </style>
 </head>
 <body>
-    <a href="playlist.php">VOLTAR</a>
+    <a href="playlist.php"><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-left' viewBox='0 0 16 16'>
+    <path fill-rule='evenodd' d='M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z'/>
+    </svg></a>
     <div class="box">
         <form action="adicionar.php" method="POST" enctype="multipart/form-data">
             <fieldset>
@@ -127,6 +122,13 @@
                 <div class="inputBox">
                     <input type="text" name="artista" id="artista" class="inputUser" required>
                     <label for="artista" class="labelInput">Artista</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="link" id="link" class="inputUser" required>
+                    <label for="link" class="labelInput">Link da musica</label>
+                </div>
+                <br><br>
                 <input type="submit" name="submit" id="submit" value="Adicionar">
             </fieldset>
         </form>

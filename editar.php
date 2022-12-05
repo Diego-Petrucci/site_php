@@ -6,7 +6,7 @@
 
         $id = $_GET['id'];
 
-        $sqlSelect = "SELECT  * FROM playlists WHERE id = $id"; 
+        $sqlSelect = "SELECT * FROM playlists WHERE id = $id"; 
 
         $result = $conexao -> query($sqlSelect);
 
@@ -14,15 +14,11 @@
             while($user_data = mysqli_fetch_assoc($result)){
                 $musica = $user_data['musica'];
                 $artista = $user_data['artista'];
+                $link = $user_data['link'];                
             }
         }else{
             header('Location: playlist.php');
         }
-
-            
-
-       $result = mysqli_query($conexao, "INSERT INTO playlists (artista, musica, id_user)
-       VALUES ('$artista', '$musica', '$id_user')");
     }
 
 ?>
@@ -86,17 +82,7 @@
             font-size: 12px;
             color: #00486f  ;
         }
-        #data_nascimento{
-            border: none;
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-top: 8px;
-            padding-bottom: 8px;
-            border-radius: 10px;
-            outline: none;
-            font-size: 15px;
-        }
-        #submit{
+        #atualizar{
             background-color:  #00486f ;
             border: none;
             width: 100%;
@@ -106,7 +92,7 @@
             border-radius: 20px;
             cursor: pointer;
         }
-        #submit:hover{
+        #atualizar:hover{
             background-color:deepskyblue;
         }
         a{
@@ -127,7 +113,7 @@
 <body>
     <a href="playlist.php">VOLTAR</a>
     <div class="box">
-        <form action="editar.php" method="POST" enctype="multipart/form-data">
+        <form action="salvar_editar.php" method="POST">
             <fieldset>
                 <legend><b>Edite as informações</b></legend>
                 <br>
@@ -139,7 +125,15 @@
                 <div class="inputBox">
                     <input type="text" name="artista" id="artista" class="inputUser" value="<?php echo $artista ?>">
                     <label for="artista" class="labelInput">Artista</label>
-                <input type="submit" name="submit" id="submit" value="Salvar alterações">
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="link" id="link" class="inputUser" value="<?php echo $link ?>">
+                    <label for="link" class="labelInput">Link da música</label>
+                </div>
+                <br><br>
+                <input type="hidden" name="id"value="<?php echo $id ?>">
+                <input type="submit" name="atualizar" id="atualizar" value="Salvar alterações">
             </fieldset>
         </form>
     </div>
